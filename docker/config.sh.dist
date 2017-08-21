@@ -3,11 +3,11 @@ export DRL_CONTAINER_NAME="drl_bootcamp_instance"
 
 # List of ports to map and publish
 # Format: HOST_PORT_A:DOCKER_PORT_A HOST_PORT_B:DOCKER_PORT_B ...
-export DR_OPEN_PORTS="8888:8888"
+export DRL_OPEN_PORTS="8888:8888"
 
 # List of mounted volumes
 # Format: HOST_DIR_A:DOCKER_DIR_A HOST_DIR_B:DOCKER_DIR_B ...
-export DR_MOUNTED_VOLUMES="/host/path/to/drl_bootcamp:/docker/path/to/drl_bootcamp"
+export DRL_MOUNTED_VOLUMES="/host/path/to/drl_bootcamp:/docker/path/to/drl_bootcamp"
 
 # Default working directory
 export DRL_WORK_DIR="/docker/path/to/drl_bootcamp"

@@ -12,7 +12,7 @@ run: build rm
 
 .PHONY: exec
 exec:
-	docker exec --interactive --tty $(DRL_CONTAINER_NAME) /bin/bash
+	nvidia-docker exec --interactive --tty $(DRL_CONTAINER_NAME) /bin/bash
 
 
 .PHONY: stop
