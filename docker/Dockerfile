@@ -32,8 +32,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --upgrade pip
 RUN pip3 install numpy scipy pandas jupyter pillow requests matplotlib h5py
 RUN pip3 install tensorflow-gpu keras
-RUN pip3 install cupy chainer chainerrl
+RUN pip3 install cupy chainer
 RUN pip3 install celery seaborn tqdm
+
+# Install DRL frameworks
+RUN pip3 install chainerrl
+RUN apt-get -y update --fix-missing && apt-get install -y xvfb zlib1g python-opengl ffmpeg libsdl2-2.0-0 fluidsynth build-essential zlib1g-dev libsdl2-dev libboost-all-dev unzip
+RUN pip3 install --no-cache-dir install --upgrade 'gym[all]'
 
 # Compile and install RoboSchool
 WORKDIR /opt/
@@ -61,6 +66,10 @@ RUN jupyter nbextension enable --py widgetsnbextension
 # Setup user-specific utilities
 RUN apt-get -y update --fix-missing && apt-get install -y nano screen
 
+# Clean up docker
+RUN apt-get -y autoremove && apt-get clean
+
 # Configure image
+WORKDIR /opt/
 EXPOSE 8888
 CMD ["jupyter", "notebook", "--allow-root", "--config", "/root/.jupyter/jupyter_notebook_config.py"]
