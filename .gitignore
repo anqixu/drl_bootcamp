@@ -103,3 +103,4 @@ ENV/
 docker/config.sh
 
 */result/
+*/agent/
